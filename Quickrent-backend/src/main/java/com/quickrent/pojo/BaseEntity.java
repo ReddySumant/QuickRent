@@ -20,9 +20,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Integer id;
 	@CreationTimestamp
 	@Column(name="created_on")
 	private LocalDateTime createdOn;
