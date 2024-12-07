@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Card, CardBody, Row, Col, Carousel, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import MainNavbar from "../components/MainNavbar";
+import Footer from "../components/Footer";
 
 const ProductDescription = () => {
   const product = {
@@ -19,13 +21,15 @@ const ProductDescription = () => {
       location: "Mumbai",
     },
     images: [
-      "/images/categories/yellow-chair.jpg",
-      "images/categories/white-chair.jpg",
-      "/images/categories/yellow-chair.jpg",
+      "/images/Category page images/yellow-chair.jpg",
+      "/images/Category page images/white-chair.jpg",
+      "/images/Category page images/yellow-chair.jpg",
     ],
   };
   
   return (
+    <>
+    <MainNavbar />
     <Container fluid className="mt-4 mb-4">
       <Card className="shadow-lg border-0">
         <CardBody>
@@ -90,6 +94,8 @@ const ProductDescription = () => {
         </CardBody>
       </Card>
     </Container>
+    <Footer />
+    </>
   );
 };
 

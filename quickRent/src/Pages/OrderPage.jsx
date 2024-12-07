@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Card, Image, Badge } from 'react-bootstrap';
+import MainNavbar from '../components/MainNavbar';
+import Footer from '../components/Footer';
 
 const OrderPage = ({
   productImage,
@@ -17,6 +19,8 @@ const OrderPage = ({
   sellerFullName,
 }) => {
   return (
+    <>
+    <MainNavbar />
     <Container fluid className="mt-5 mb-5">
       <Card className="shadow border-0">
         <Card.Body>
@@ -39,7 +43,7 @@ const OrderPage = ({
           {/* Product and Order Details */}
           <Row className="align-items-center mb-4" >
             <Col md={4} className="text-center">
-              <Image src={productImage} alt="Product" fluid className="rounded shadow-sm" />
+              <Image src={productImage} alt="Product" fluid className="rounded shadow-sm"  style={{ width: '200px', height: '200px'}}/>
             </Col>
             <Col md={4}>
               <h5 className="fw-bold text-dark">{productTitle}</h5>
@@ -95,6 +99,8 @@ const OrderPage = ({
         </Card.Body>
       </Card>
     </Container>
+    <Footer />
+    </>
   );
 };
 

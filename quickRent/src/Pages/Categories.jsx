@@ -6,6 +6,7 @@ import MainNavbar from '../components/MainNavbar';
 import Footer from '../components/Footer';
 import '../styles/Categories.css';
 import products from '../components/ProductsData';
+import { Link } from 'react-router-dom';
 
 function Categories() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -65,10 +66,12 @@ function Categories() {
                       <span>Location: {product.location}</span>
                     </div>
                     <div className="product-actions">
-                      <Button variant="primary">Buy Now</Button>
-                      <Button variant="dark" className="cart-btn">
-                        <BsHeart />
-                      </Button>
+                        <Link to="/description">
+                          <Button variant="primary">Buy Now</Button>
+                        </Link>
+                        <Button variant="dark" className="cart-btn">
+                          <BsHeart />
+                        </Button>
                     </div>
                   </Card.Body>
                 </Card>

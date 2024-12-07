@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Row, Col, Container, InputGroup, FloatingLabel, Card, CardBody } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from 'react-router-dom';
+import Footer from "../components/Footer";
+import MainNavbar from "../components/MainNavbar";
 
 const CheckoutPage = () => {
   const [formData, setFormData] = useState({
@@ -91,6 +93,8 @@ const CheckoutPage = () => {
   const total = subtotal + subtotal * taxRate;
 
   return (
+    <>
+    <MainNavbar />
     <Container fluid className="p-4">
       <Card className="shadow border-0">
       <CardBody>
@@ -248,7 +252,7 @@ const CheckoutPage = () => {
                   marginRight: 15,
                 }}
               ></div> */}
-            <img src="/images/categories/yellow-chair.jpg" alt="" style={{height:"100px", weight:"100px", marginRight:"3rem"}} />
+            <img src="/images/Category page images/yellow-chair.jpg" alt="" style={{height:"100px", weight:"100px", marginRight:"3rem"}} />
               <div>
                 <p className="mb-0"><b>A1S Cushioned Lounge Chair</b></p>
                 <small>Green Soul</small>
@@ -287,6 +291,8 @@ const CheckoutPage = () => {
       </CardBody>
       </Card>
     </Container>
+    <Footer />
+    </>
   );
 };
 

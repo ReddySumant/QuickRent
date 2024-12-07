@@ -26,22 +26,27 @@ import SearchAndFilter from "./components/SearchAndFilter";
 import AddAdmin from "./components/AddAdmin";
 import AddCategory from "./components/AddCategory";
 
-// const orderData = {
-//   productImage: "/images/Category page images/yellow-chair.jpg",
-//   productTitle: "A1S Cushioned Lounge Chair",
-//   brandName: "Green Soul",
-//   modelName: "Amaze",
-//   sellerName: "CDAC",
-//   orderNumber: "ORD123456789",
-//   orderDate: "2024/11/28",
-//   rentalDuration: { from: "2024/12/01", to: "2024/12/10" },
-//   renterName: "Sumant Reddy",
-//   renterEmail: "reddysumant25@gmail.com",
-//   renterPhone: "+91-9970222965",
-//   address:
-//     "311, Niwara Society, Balaji Nagar, Pune, Maharashtra, India - 411043",
-//   sellerFullName: "Shreeram Mahadik",
-// };
+import ProductDescription from "./Pages/ProductDescription.jsx"
+import CheckoutPage from "./Pages/CheckoutPage.jsx"
+import OrderPage from "./Pages/OrderPage.jsx"
+
+const orderData = {
+  productImage: "/images/Category page images/yellow-chair.jpg",
+  productTitle: "A1S Cushioned Lounge Chair",
+  brandName: "Green Soul",
+  modelName: "Amaze",
+  sellerName: "CDAC",
+  orderNumber: "ORD123456789",
+  orderDate: "2024/11/28",
+  rentalDuration: { from: "2024/12/01", to: "2024/12/10" },
+  renterName: "Sumant Reddy",
+  renterEmail: "reddysumant25@gmail.com",
+  renterPhone: "+91-9970222965",
+  address:
+    "311, Niwara Society, Balaji Nagar, Pune, Maharashtra, India - 411043",
+  sellerFullName: "Shreeram Mahadik",
+};
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -53,9 +58,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/register" element={<Register />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/description" element={<ProductDescription />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-placed" element={<OrderPage {...orderData}/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/userinfo" element={<Profile />} />
           <Route path="/useraddr" element={<Address />} />
+          
           <Route path="/userorders" element={<Orders />} />
           <Route
             path="/conflicthandlingform"
@@ -68,11 +77,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="add-document-form" element={<AddDocumentForm />} />
             <Route path="profile" element={<SellerProfile />} />
           </Route>
-
-
           
-      
-     
         <Route path="/admin" element={<SearchAndFilter />} />
         <Route path="/admin/add-admin" element={<AddAdmin />} />
         <Route path="/admin/add-category" element={<AddCategory />} />
