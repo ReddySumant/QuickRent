@@ -1,4 +1,4 @@
-package com.quickrent.serviceImpl;
+package com.quickrent.service;
 
 import java.lang.StackWalker.Option;
 import java.util.Objects;
@@ -17,7 +17,6 @@ import com.quickrent.dto.OrderResponseDto;
 import com.quickrent.pojo.Order;
 import com.quickrent.pojo.Product;
 import com.quickrent.pojo.User;
-import com.quickrent.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -36,7 +35,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public OrderResponseDto saveOrder(OrderRequestDto orderRequestDto) {
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		Order order = modelMapper.map(orderRequestDto, Order.class);
 		if (Objects.nonNull(orderRequestDto.getProductId())) {
 			order.setProduct(getProductById(orderRequestDto.getProductId()));
