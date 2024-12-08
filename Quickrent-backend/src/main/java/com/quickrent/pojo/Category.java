@@ -2,6 +2,7 @@ package com.quickrent.pojo;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "categories") // Maps this class to the "categories" table in the database
-public class Categories {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented primary key
@@ -31,14 +32,11 @@ public class Categories {
     private String parentCategory;
 
     // Relationship with Products
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Products> products = new ArrayList<>();
-
-    // Default constructor
-    public Categories() {}
+    @OneToMany(mappedBy = "category")
+    private List<Product> products = new ArrayList<>();
 
     // Parameterized constructor
-    public Categories(String categoryName, String description, String parentCategory) {
+    public Category(String categoryName, String description, String parentCategory) {
         this.categoryName = categoryName;
         this.description = description;
         this.parentCategory = parentCategory;

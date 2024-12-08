@@ -49,9 +49,27 @@ public class Order extends BaseEntity {
 	@Column(name="is_cancelled", columnDefinition = "BOOLEAN DEFAULT 0")
 	private Boolean isCancelled;
 	
+    @Column(length = 255, nullable = false)
+    private String address;
+
+    @Column(length = 100, nullable = false)
+    private String city;
+
+    @Column(length = 100, nullable = false)
+    private String state;
+
+    @Column(length = 100, nullable = false)
+    private String country;
+
+    @Column(length = 10, nullable = false)
+    private String pincode;
+	
 	//Foreign keys
 	@ManyToOne
 	@JoinColumn(name="product_id")
 	private Product product;
-	//private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 }

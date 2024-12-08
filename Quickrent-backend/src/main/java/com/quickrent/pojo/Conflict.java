@@ -5,24 +5,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "conflicts")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @ToString(callSuper = true)
-public class Conflicts extends BaseEntity {
+@Table(name = "conflicts")
+public class Conflict extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name="conflict_id")
-	private Integer conflictid;
+	private Integer conflictId;
 
     @Column(name = "title", nullable = false, length = 100)
     private String title;
@@ -34,15 +37,12 @@ public class Conflicts extends BaseEntity {
     private Boolean isResolved;
 
     @ManyToOne
-	@JoinTable("user_id")
+    @JoinColumn(name = "user_id")
 	private User user;
     
     @ManyToOne
-	@JoinTable("order_id")
+    @JoinColumn(name = "order_id")
 	private Order order;
-    
-    // Default constructor
-    public Conflicts() {}
 
    
 }

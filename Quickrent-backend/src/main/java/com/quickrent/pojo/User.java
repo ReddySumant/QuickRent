@@ -13,18 +13,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.criteria.Order;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 	
@@ -62,13 +60,16 @@ public class User extends BaseEntity {
 
     @Column(name="pan_card_file",length = 255)
     private String panCardFile;
+    
+    @Column(name="user_role")
+    private UserRole userrole;
 
     @OneToMany(mappedBy="user")
-	private List<Products> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-	private List<Order> orders = new ArrayList<>();
+    private List<com.quickrent.pojo.Order> orders = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-	private List<Conflict> conflicts = new ArrayList<>();
+	private List<com.quickrent.pojo.Conflict> conflicts = new ArrayList<>();
 }
