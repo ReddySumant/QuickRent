@@ -10,13 +10,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Table(name = "customer") // Maps this entity to the "customer" table
 @Getter
 @Setter
 @ToString(callSuper = true) // Includes fields from BaseEntity in the toString() method
 public class Customer extends BaseEntity {
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="customer_id")
 	private Integer customerid;

@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,7 +54,14 @@ public class Product extends BaseEntity {
 	private Boolean isApproved;
 	
 	//foreign keys
-	//private Seller sellerId;
-	//private Category categoryId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Category category;
+	
+	
 	
 }

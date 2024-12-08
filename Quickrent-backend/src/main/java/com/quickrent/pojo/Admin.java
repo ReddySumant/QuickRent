@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -15,6 +16,7 @@ import lombok.ToString;
 @Table(name = "admin") // Specifies the table name in the database
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString(callSuper = true) // Includes fields from BaseEntity in the toString() method
 public class Admin extends BaseEntity {
 	
@@ -28,10 +30,6 @@ public class Admin extends BaseEntity {
 
     @Column(name = "password", nullable = false, length = 255)
     private String password; // Admin password
-
-    // Default Constructor
-    public Admin() {
-    }
 
     // Parameterized Constructor
     public Admin(String email, String password) {
