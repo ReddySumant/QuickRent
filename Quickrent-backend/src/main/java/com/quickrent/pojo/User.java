@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -58,6 +59,12 @@ public class User extends BaseEntity {
     @Column(name="pan_card_file",length = 255)
     private String panCardFile;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Address address;
+    @OneToMany(mappedby="user")
+	private List<Products> products = new ArrayList<>();
+    
+    @OneToMany(mappedby="user")
+	private List<Order> orders = new ArrayList<>();
+    
+    @OneToMany(mappedby="user")
+	private List<Conflict> conflicts = new ArrayList<>();
 }
