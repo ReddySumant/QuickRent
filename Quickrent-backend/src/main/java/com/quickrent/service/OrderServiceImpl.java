@@ -1,36 +1,25 @@
 package com.quickrent.service;
 
 import org.hibernate.HibernateException;
-
 import com.quickrent.dto.ResponseOrderDTO;
-
 import jakarta.transaction.Transactional;
-
-package com.quickrent.service;
-
 import java.lang.StackWalker.Option;
 import java.util.Objects;
 import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.quickrent.dao.ProductDao;
 import com.quickrent.dao.UserDao;
-import com.quickrent.dao.orderDao;
 import com.quickrent.dto.OrderRequestDto;
 import com.quickrent.dto.OrderResponseDto;
 import com.quickrent.pojo.Order;
 import com.quickrent.pojo.Product;
 import com.quickrent.pojo.User;
-
-
 import com.quickrent.dao.OrderDao;
 import com.quickrent.dto.OrderDTO;
 import com.quickrent.service.OrderService;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

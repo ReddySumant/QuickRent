@@ -37,9 +37,6 @@ public class OrderController {
 	public ResponseEntity<?> getOrderData(@RequestBody RequestOrderDTO reqDTO){
 		return ResponseEntity.ok(orderService.getOrderData(reqDTO.getId()));
 	}
-  
-  @Autowired
-  private OrderService orderService;
 
   // Get orders by user ID
     @GetMapping("/user/{userId}")

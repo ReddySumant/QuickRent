@@ -65,7 +65,7 @@ public class ProductController {
                     .body(new ApiResponse(e.getMessage()));
         }
     }
-
+    
     // Update a product by ID
     @PutMapping("/{productId}")
     public ResponseEntity<?> updateProductDetails(@PathVariable Integer productId,
