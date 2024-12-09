@@ -29,7 +29,7 @@ public class User extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private Integer usersid;
-	
+
 	@Enumerated(EnumType.STRING)
     @Column(name="user_role")
     private UserRole userRole;
