@@ -58,6 +58,9 @@ public class Product extends BaseEntity {
 	@Column(name="is_approved", columnDefinition = "BOOLEAN DEFAULT 0")
 	private Boolean isApproved;
 	
+	@Column(length=255)
+	private String image;
+	
 	//foreign keys
 	@ManyToOne
 	@JoinColumn(name="user_id")
