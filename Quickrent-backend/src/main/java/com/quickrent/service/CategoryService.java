@@ -1,9 +1,9 @@
 package com.quickrent.service;
 
-import com.quickrent.dto.ProductResponseDTO;
+import com.quickrent.dto.ProductResponseFromCategoryDTO;
 
 public interface CategoryService {
 
-	ProductResponseDTO getProductsByCategoryId(Integer id);
+	ProductResponseFromCategoryDTO getProductsByCategoryId(Integer id);
 
 }

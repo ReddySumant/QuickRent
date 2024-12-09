@@ -1,7 +1,5 @@
 package com.quickrent.controller;
 
-import com.quickrent.dto.ProductRequestDTO;
-import com.quickrent.pojo.Product;
 import com.quickrent.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +16,8 @@ public class CategoryController {
 
     // API to get products by category ID
     @GetMapping("/{categoryId}")
-    public ResponseEntity<?> getProductsByCategoryId(@PathVariable ProductRequestDTO reqdto) {
-    	System.out.println("int getProductByCategoryId" + reqdto.getId());
-        return ResponseEntity.ok(categoryService.getProductsByCategoryId(reqdto.getId()));
+    public ResponseEntity<?> getProductsByCategoryId(@PathVariable int categoryId) {
+    	//System.out.println("int getProductByCategoryId" + reqdto.getId());
+        return ResponseEntity.ok(categoryService.getProductsByCategoryId(categoryId));
     }
 }
