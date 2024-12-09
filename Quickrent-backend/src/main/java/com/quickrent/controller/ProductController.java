@@ -23,7 +23,8 @@ public class ProductController {
     public ProductController() {
         System.out.println("in ctor " + getClass());
     }
-
+    
+    /*
     // Get all products
     @GetMapping
     public ResponseEntity<?> getProducts() {
@@ -33,6 +34,7 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
+
 
     // Add a new product
     @PostMapping
@@ -53,6 +55,7 @@ public class ProductController {
                     .body(new ApiResponse(e.getMessage()));
         }
     }
+    */
 
     // Get a product by ID
     @GetMapping("/{productId}")
@@ -66,6 +69,8 @@ public class ProductController {
         }
     }
     
+    /*
+    
     // Update a product by ID
     @PutMapping("/{productId}")
     public ResponseEntity<?> updateProductDetails(@PathVariable Integer productId,
@@ -78,4 +83,5 @@ public class ProductController {
                     .body(new ApiResponse(e.getMessage()));
         }
     }
+    */
 }
