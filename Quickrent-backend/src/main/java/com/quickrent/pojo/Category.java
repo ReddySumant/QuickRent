@@ -10,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 @Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @Table(name = "categories") // Maps this class to the "categories" table in the database
-public class Category extends BaseEntity {
+
+public class Category extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incremented primary key
