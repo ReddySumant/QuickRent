@@ -15,6 +15,7 @@ import com.quickrent.service.ProductService;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+	
 
     @Autowired
     private ProductService productService;

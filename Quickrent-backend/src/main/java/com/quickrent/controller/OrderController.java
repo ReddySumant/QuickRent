@@ -1,5 +1,8 @@
 package com.quickrent.controller;
 
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +19,29 @@ import java.util.List;
 import com.quickrent.dto.OrderRequestDto;
 import com.quickrent.dto.OrderResponseDto;
 import com.quickrent.service.OrderService;
+import com.quickrent.dto.RequestOrderDTO;
 
 
-@RequestMapping("/api/orders")
+@RestController
+@RequestMapping("/api/order")
+@CrossOrigin(value = { "http://localhost:3000/" })
 public class OrderController {
+	@Autowired
+	private OrderService orderService;
+	
+	public OrderController() {
+		System.out.println("Inside Order Controller");
+	}
+	
+	@PostMapping("/getorder")
+	public ResponseEntity<?> getOrderData(@RequestBody RequestOrderDTO reqDTO){
+		return ResponseEntity.ok(orderService.getOrderData(reqDTO.getId()));
+	}
+  
+  @Autowired
+  private OrderService orderService;
 
-    @Autowired
-    private OrderService orderService;
-
-    // Get orders by user ID
+  // Get orders by user ID
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<OrderDTO>> getOrdersByUserId(@PathVariable Integer userId) {
         List<OrderDTO> orderDTOs = orderService.getOrdersByUserId(userId);
@@ -44,4 +61,6 @@ public class OrderController {
         return ResponseEntity.ok(orderService.saveOrder(order));
     }
     */
+	
 }
+

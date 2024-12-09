@@ -1,5 +1,6 @@
 package com.quickrent.service;
 
+import com.quickrent.dto.ResponseOrderDTO;
 import com.quickrent.dto.OrderRequestDto;
 import com.quickrent.dto.OrderResponseDto;
 import com.quickrent.dto.OrderDTO;
@@ -19,4 +20,6 @@ public interface OrderService {
     */
   
     OrderResponseDto saveOrder(OrderRequestDto orderRequestDto);
+  
+    ResponseOrderDTO getOrderData(int orderId);
 }

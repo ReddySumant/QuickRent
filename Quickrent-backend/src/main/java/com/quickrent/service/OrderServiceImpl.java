@@ -1,3 +1,10 @@
+package com.quickrent.service;
+
+import org.hibernate.HibernateException;
+
+import com.quickrent.dto.ResponseOrderDTO;
+
+import jakarta.transaction.Transactional;
 
 package com.quickrent.service;
 
@@ -112,4 +119,16 @@ public class OrderServiceImpl implements OrderService {
         return orderDao.save(order);
     }
     */
+  
+  	@Override
+	  public ResponseOrderDTO getOrderData(int orderId) {
+      Order order = orderDao.findById(orderId).orElseThrow(()-> new HibernateException("hi"));
+      Product product = order.getProduct();
+      ResponseOrderDTO orderdto = modelMapper.map(order, ResponseOrderDTO.class);
+      orderdto.setProductTitle(product.getTitle());
+      orderdto.setProductBrand(product.getBrandName());
+      orderdto.setProductSellerName(product.getUser().getFirstname() + " " + product.getUser().getLastname());
+      orderdto.setCustomerName(order.getUser().getFirstname() + " "+ order.getUser().getLastname());
+      return orderdto;
+	  }
 }

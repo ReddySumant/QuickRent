@@ -13,14 +13,15 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	@Bean //equivalent to <bean id ..../> in xml file
-	//Use case - for configuring 3rd part Java classes as spring beans !
+
+	@Bean
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();	
 		modelMapper.getConfiguration()
 		.setMatchingStrategy(MatchingStrategies.STRICT) //only MATCHING prop names n data types between src n dest will be transferred , during the mapping
 		.setPropertyCondition(Conditions.isNotNull());// only non null properties will be transferred from src --> dest , during the mapping
 	return modelMapper;//rets configured ModelMapper instance to the caller : SC
+
 	}
 
 }
