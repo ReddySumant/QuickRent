@@ -1,3 +1,4 @@
+
 package com.quickrent.service;
 
 import java.lang.StackWalker.Option;
@@ -18,7 +19,17 @@ import com.quickrent.pojo.Order;
 import com.quickrent.pojo.Product;
 import com.quickrent.pojo.User;
 
+
+import com.quickrent.dao.OrderDao;
+import com.quickrent.dto.OrderDTO;
+import com.quickrent.service.OrderService;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
@@ -29,9 +40,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private ProductDao productDao;
-
-	@Autowired
-	private orderDao orderDao;
+  
+  @Autowired
+  private OrderDao orderDao;
 
 	@Override
 	public OrderResponseDto saveOrder(OrderRequestDto orderRequestDto) {
@@ -71,4 +82,34 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 
+    @Override
+    public List<OrderDTO> getOrdersByUserId(Integer userId) {
+        List<Order> orders = orderDao.findOrdersByUserId(userId);
+        // Convert Orders to OrderDTOs 
+        return orders.stream().map(order -> {
+            OrderDTO dto = new OrderDTO();
+            dto.setOrderId(order.getOrderId());
+            dto.setDiscount(order.getDiscount());
+            dto.setTaxes(order.getTaxes());
+            dto.setStartDate(order.getStartDate());
+            dto.setEndDate(order.getEndDate());
+            dto.setBillingCycle(order.getBillingCycle().toString());
+            dto.setAddress(order.getAddress());
+            dto.setCity(order.getCity());
+            dto.setState(order.getState());
+            dto.setCountry(order.getCountry());
+            dto.setPincode(order.getPincode());
+            dto.setProductName(order.getProduct().getTitle()); 
+            dto.setUserName(order.getUser().getFirstname() + " " + order.getUser().getLastname()); 
+            return dto;
+        }).collect(Collectors.toList());
+    }
+
+    /*
+     * Extra by Ashwini
+    @Override
+    public Order saveOrder(Order order) {
+        return orderDao.save(order);
+    }
+    */
 }
