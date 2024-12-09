@@ -1,5 +1,5 @@
 package com.quickrent.pojo;
 
 public enum UserRole {
-	ADMIN, CUSTOMER
+	SELLER, CUSTOMER
 }
