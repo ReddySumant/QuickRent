@@ -37,10 +37,16 @@ public class OrderServiceImpl implements OrderService {
 	public OrderResponseDto saveOrder(OrderRequestDto orderRequestDto) {
 		Order order = modelMapper.map(orderRequestDto, Order.class);
 		if (Objects.nonNull(orderRequestDto.getProductId())) {
-			order.setProduct(getProductById(orderRequestDto.getProductId()));
+			Product product = getProductById(orderRequestDto.getProductId());
+			order.setProduct(product);
+			product.getOrders().add(order);
+			productDao.save(product);
 		}
 		if (Objects.nonNull(orderRequestDto.getUserId())) {
-			order.setUser(getUserByUsdrId(orderRequestDto.getUserId()));
+			User user = getUserByUsdrId(orderRequestDto.getUserId());
+			order.setUser(user);
+			user.getOrders().add(order);
+			userDao.save(user);
 		}
 		order = orderDao.save(order);
 		OrderResponseDto response = modelMapper.map(order, OrderResponseDto.class);
