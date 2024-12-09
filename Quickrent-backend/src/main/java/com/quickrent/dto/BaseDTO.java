@@ -20,3 +20,4 @@ public class BaseDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private LocalDateTime updatedOn;
 }
+

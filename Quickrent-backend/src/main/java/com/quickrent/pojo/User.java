@@ -3,8 +3,6 @@ package com.quickrent.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.client.HttpClientErrorException.Conflict;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.criteria.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +29,10 @@ public class User extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private Integer usersid;
+	
+	@Enumerated(EnumType.STRING)
+    @Column(name="user_role")
+    private UserRole userRole;
 
     @Column(name="first_name",length = 100, nullable = false)
     private String firstname;
@@ -62,17 +63,13 @@ public class User extends BaseEntity {
 
     @Column(name="pan_card_file",length = 255)
     private String panCardFile;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(name="user_role")
-    private UserRole userRole;
 
     @OneToMany(mappedBy="user")
     private List<Product> products = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-    private List<com.quickrent.pojo.Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-	private List<com.quickrent.pojo.Conflict> conflicts = new ArrayList<>();
+	private List<Conflict> conflicts = new ArrayList<>();
 }
