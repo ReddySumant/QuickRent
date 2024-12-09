@@ -1,5 +1,7 @@
 package com.quickrent.service;
 
+import com.quickrent.dto.OrderRequestDto;
+import com.quickrent.dto.OrderResponseDto;
 import com.quickrent.dto.OrderDTO;
 import com.quickrent.pojo.Order;
 
@@ -15,5 +17,6 @@ public interface OrderService {
     // Save a new order
     Order saveOrder(Order order);
     */
+  
+    OrderResponseDto saveOrder(OrderRequestDto orderRequestDto);
 }
-

@@ -1,5 +1,9 @@
 package com.quickrent.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.quickrent.dto.OrderDTO;
 import com.quickrent.pojo.Order;
 import com.quickrent.service.OrderService;
@@ -9,7 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+import com.quickrent.dto.OrderRequestDto;
+import com.quickrent.dto.OrderResponseDto;
+import com.quickrent.service.OrderService;
+
+
 @RequestMapping("/api/orders")
 public class OrderController {
 
@@ -21,6 +29,11 @@ public class OrderController {
     public ResponseEntity<List<OrderDTO>> getOrdersByUserId(@PathVariable Integer userId) {
         List<OrderDTO> orderDTOs = orderService.getOrdersByUserId(userId);
         return ResponseEntity.ok(orderDTOs);
+    }
+
+    @PostMapping
+    public OrderResponseDto createOrder(@RequestBody OrderRequestDto orderRequestDto) {
+      return orderService.saveOrder(orderRequestDto);
     }
 
     /*

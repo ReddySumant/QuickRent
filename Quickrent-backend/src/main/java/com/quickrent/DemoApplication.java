@@ -21,7 +21,6 @@ public class DemoApplication {
 		.setMatchingStrategy(MatchingStrategies.STRICT) //only MATCHING prop names n data types between src n dest will be transferred , during the mapping
 		.setPropertyCondition(Conditions.isNotNull());// only non null properties will be transferred from src --> dest , during the mapping
 	return modelMapper;//rets configured ModelMapper instance to the caller : SC
-
 	}
 
 }

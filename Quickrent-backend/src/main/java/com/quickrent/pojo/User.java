@@ -63,16 +63,13 @@ public class User extends BaseEntity {
 
     @Column(name="pan_card_file",length = 255)
     private String panCardFile;
-    
-//    @Column(name="user_role")
-//    private UserRole userrole;
 
     @OneToMany(mappedBy="user")
     private List<Product> products = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-    private List<com.quickrent.pojo.Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
     
     @OneToMany(mappedBy="user")
-	private List<com.quickrent.pojo.Conflict> conflicts = new ArrayList<>();
+	private List<Conflict> conflicts = new ArrayList<>();
 }
