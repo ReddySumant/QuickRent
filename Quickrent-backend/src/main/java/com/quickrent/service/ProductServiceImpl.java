@@ -3,6 +3,7 @@ package com.quickrent.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDao productDao;
-
+    
     @Override
     public List<ProductDTO> getAllProducts() {
         return productDao.findAll()
