@@ -22,9 +22,13 @@ import com.quickrent.service.OrderService;
 import com.quickrent.dto.RequestOrderDTO;
 
 
+
 @RestController
 @RequestMapping("/api/order")
-@CrossOrigin(value = { "http://localhost:3000/" })
+//@CrossOrigin(value = { "http://localhost:3000/" })
+
+@CrossOrigin(origins = "http://localhost:5174")
+
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
