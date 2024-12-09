@@ -7,6 +7,8 @@ import org.springframework.web.client.HttpClientErrorException.Conflict;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -61,8 +63,9 @@ public class User extends BaseEntity {
     @Column(name="pan_card_file",length = 255)
     private String panCardFile;
     
+    @Enumerated(EnumType.STRING)
     @Column(name="user_role")
-    private UserRole userrole;
+    private UserRole userRole;
 
     @OneToMany(mappedBy="user")
     private List<Product> products = new ArrayList<>();
