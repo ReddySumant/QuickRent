@@ -7,18 +7,14 @@ import Footer from '../components/Footer';
 import '../styles/Categories.css';
 import products from '../components/ProductsData';
 import { Link } from 'react-router-dom';
+import { Products } from '../components/Products';
 
 function Categories() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('Electronics');
+  const [index, setIndex] = useState(0);
   
-  const categories = ['All', 'Electronics', 'Appliances', 'Furnitures', 'H/W Tools', 'Events/Decors', 'Sports/Gears'];
-
-  
-
-  // Filter products based on the active category
-  const filteredProducts = activeCategory === 'All'
-    ? products
-    : products.filter(product => product.category === activeCategory);
+  const categories = ['Electronics', 'Appliances', 'Furnitures', 'H/W Tools', 'Events/Decors', 'Sports/Gears'];
+  const category_ids= [1,2,3,4,5,6];
 
   return (
     <div className="app">
@@ -33,12 +29,12 @@ function Categories() {
         <Container fluid="lg">
           {/* Category buttons */}
           <div className="category-buttons">
-            {categories.map((category) => (
+            {categories.map((category, index1) => (
               <Button
                 key={category}
                 variant={activeCategory === category ? 'primary' : 'outline-primary'}
                 className="category-button"
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {setActiveCategory(category); setIndex(index1)}}
               >
                 {category}
               </Button>
@@ -47,36 +43,7 @@ function Categories() {
 
           {/* Products Grid */}
           <Row className="g-4 mt-3">
-            {filteredProducts.map((product) => (
-              <Col key={product.id} xs={12} sm={6} lg={4}>
-                <Card className="product-card">
-                  <div className="card-image-wrapper">
-                    <Card.Img variant="top" src={product.image} />
-                   
-                  </div>
-                  <Card.Body>
-                    <Card.Title>{product.title}</Card.Title>
-                    <div className="product-features">
-                      {product.features.map((feature, index) => (
-                        <p key={index}>• {feature}</p>
-                      ))}
-                    </div>
-                    <div className="product-info">
-                      <span>Seller: {product.seller}</span>
-                      <span>Location: {product.location}</span>
-                    </div>
-                    <div className="product-actions">
-                        <Link to="/description">
-                          <Button variant="primary">Buy Now</Button>
-                        </Link>
-                        <Button variant="dark" className="cart-btn">
-                          <BsHeart />
-                        </Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+            <Products categoryId={category_ids[index]} />
           </Row>
         </Container>
       </div>
