@@ -10,7 +10,10 @@ public interface OrderService {
     // Fetch orders by user ID
     List<OrderDTO> getOrdersByUserId(Integer userId);
 
+    /*
+     * Extra by Ashwini
     // Save a new order
     Order saveOrder(Order order);
+    */
 }
 

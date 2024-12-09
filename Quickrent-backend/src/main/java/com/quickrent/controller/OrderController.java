@@ -23,9 +23,12 @@ public class OrderController {
         return ResponseEntity.ok(orderDTOs);
     }
 
+    /*
+     * Extra by Ashwini
     // Save a new order
     @PostMapping
     public ResponseEntity<Order> saveOrder(@RequestBody Order order) {
         return ResponseEntity.ok(orderService.saveOrder(order));
     }
+    */
 }
