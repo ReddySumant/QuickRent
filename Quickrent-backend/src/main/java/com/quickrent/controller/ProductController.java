@@ -14,6 +14,7 @@ import com.quickrent.service.ProductService;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "*")
 public class ProductController {
 	
 

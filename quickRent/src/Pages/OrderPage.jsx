@@ -1,23 +1,38 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Image, Badge } from 'react-bootstrap';
 import MainNavbar from '../components/MainNavbar';
 import Footer from '../components/Footer';
 
 const OrderPage = ({
-  productImage,
-  productTitle,
-  brandName,
-  modelName,
-  sellerName,
-  orderNumber,
-  orderDate,
-  rentalDuration,
-  renterName,
-  renterEmail,
-  renterPhone,
-  address,
-  sellerFullName,
 }) => {
+  const [order, setOrder] = useState();
+
+  const fetchData = async () =>{
+    try {
+      const response = await axios.post('http://localhost:8080/api/order/getorder', { id: 4 });
+      setOrder(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect(()=>{
+    fetchData();
+  }
+  ,[])
+
+  if(!order){
+    return(
+      <div>
+        <MainNavbar />
+        No Data
+        <Footer />
+      </div>
+    )
+  }
+
   return (
     <>
     <MainNavbar />
@@ -43,37 +58,37 @@ const OrderPage = ({
           {/* Product and Order Details */}
           <Row className="align-items-center mb-4" >
             <Col md={4} className="text-center">
-              <Image src={productImage} alt="Product" fluid className="rounded shadow-sm"  style={{ width: '200px', height: '200px'}}/>
+              <Image src="/images/categories/yellow-chair.jpg" alt="Product" fluid className="rounded shadow-sm" />
             </Col>
             <Col md={4}>
-              <h5 className="fw-bold text-dark">{productTitle}</h5>
+              <h5 className="fw-bold text-dark">{order.productTitle}</h5>
               <p className="mb-1">
                 <Badge bg="info" className="me-1">
                   Brand
                 </Badge>
-                {brandName}
+                {order.productBrand}
               </p>
               <p className="mb-1">
                 <Badge bg="secondary" className="me-1">
                   Model
                 </Badge>
-                {modelName}
+                {"High Class"}
               </p>
               <p className="text-muted">
-                <span className="fw-bold">Sold by:</span> {sellerName}
+                <span className="fw-bold">Sold by:</span> {order.productSellerName}
               </p>
             </Col>
             <Col md={4} className="text-muted">
               <h5 className="fw-bold">Order Details</h5>
               <p>
-                <span className="fw-bold">Order Number:</span> {orderNumber}
+                <span className="fw-bold">Order Number:</span> {"ORD502575" + order.orderId}
               </p>
               <p>
-                <span className="fw-bold">Placed On:</span> {orderDate}
+                <span className="fw-bold">Placed On:</span> {"2024-12-09"}
               </p>
               <p>
                 <span className="fw-bold">Duration:</span>{' '}
-                {rentalDuration.from} - {rentalDuration.to}
+                {order.startDate} - {order.endDate}
               </p>
             </Col>
           </Row>
@@ -83,17 +98,17 @@ const OrderPage = ({
           <Row className="align-items-center mt-4 mx-5" style={{textAlign:'center'}}>
             <Col md={4} className="text-muted mb-3">
               <h6 className="fw-bold">Rented By:</h6>
-              <p className="mb-1">{renterName}</p>
-              <p className="mb-1">{renterEmail}</p>
-              <p>{renterPhone}</p>
+              <p className="mb-1">{order.customerName}</p>
+              <p className="mb-1">{"reddysumant25@gmail.com"}</p>
+              <p>{"9970222965"}</p>
             </Col>
             <Col md={4} className="text-muted mb-3">
               <h6 className="fw-bold">Address:</h6>
-              <p>{address}</p>
+              <p>{order.address + " " + order.city + " " + order.state + " " + order.country + " " + order.pincode}</p>
             </Col>
             <Col md={4} className="text-muted">
               <h6 className="fw-bold">Rented By Seller:</h6>
-              <p>{sellerFullName}</p>
+              <p>{order.productSellerName}</p>
             </Col>
           </Row>
         </Card.Body>
