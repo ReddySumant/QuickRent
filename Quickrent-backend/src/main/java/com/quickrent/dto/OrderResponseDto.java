@@ -8,7 +8,9 @@ import lombok.Data;
 
 @Data
 public class OrderResponseDto {
-
+	
+	private Integer orderId;
+	/*
 	private Double discount;
 	private Double taxes;
 	private LocalDate startDate;
@@ -22,5 +24,5 @@ public class OrderResponseDto {
 	private String pincode;
 	private ProductResponseDto product;
 	private UserResponseDto user;
-
+	*/
 }

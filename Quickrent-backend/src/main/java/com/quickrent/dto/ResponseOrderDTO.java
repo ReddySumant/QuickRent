@@ -41,4 +41,7 @@ public class ResponseOrderDTO extends BaseDTO {
     private String productBrand;
     private String productSellerName;
     private String customerName;
+    private String customerEmail;
+    private String phoneNo;
+    private String productImage;
 }

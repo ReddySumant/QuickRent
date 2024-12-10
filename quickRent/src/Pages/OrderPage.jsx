@@ -3,14 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Image, Badge } from 'react-bootstrap';
 import MainNavbar from '../components/MainNavbar';
 import Footer from '../components/Footer';
+import { useLocation } from 'react-router-dom';
 
 const OrderPage = ({
 }) => {
   const [order, setOrder] = useState();
+  const location = useLocation();
+  const orderId = location.state;
 
   const fetchData = async () =>{
     try {
-      const response = await axios.post('http://localhost:8080/api/order/getorder', { id: 4 });
+      const response = await axios.get(`http://localhost:8080/api/order/getorder/${orderId}`);
       setOrder(response.data);
       console.log(response.data);
     } catch (error) {
@@ -58,7 +61,7 @@ const OrderPage = ({
           {/* Product and Order Details */}
           <Row className="align-items-center mb-4" >
             <Col md={4} className="text-center">
-              <Image src="/images/categories/yellow-chair.jpg" alt="Product" fluid className="rounded shadow-sm" />
+              <Image src={order.productImage} alt="Product" fluid className="rounded shadow-sm" />
             </Col>
             <Col md={4}>
               <h5 className="fw-bold text-dark">{order.productTitle}</h5>

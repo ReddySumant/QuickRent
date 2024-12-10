@@ -14,6 +14,7 @@ import com.quickrent.dao.ProductDao;
 import com.quickrent.dao.UserDao;
 import com.quickrent.dto.OrderRequestDto;
 import com.quickrent.dto.OrderResponseDto;
+import com.quickrent.pojo.BillingCycle;
 import com.quickrent.pojo.Order;
 import com.quickrent.pojo.Product;
 import com.quickrent.pojo.User;
@@ -43,6 +44,8 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderResponseDto saveOrder(OrderRequestDto orderRequestDto) {
 		Order order = modelMapper.map(orderRequestDto, Order.class);
+			order.setBillingCycle(BillingCycle.DAILY);
+		
 		if (Objects.nonNull(orderRequestDto.getProductId())) {
 			Product product = getProductById(orderRequestDto.getProductId());
 			order.setProduct(product);
@@ -118,6 +121,9 @@ public class OrderServiceImpl implements OrderService {
       orderdto.setProductBrand(product.getBrandName());
       orderdto.setProductSellerName(product.getUser().getFirstname() + " " + product.getUser().getLastname());
       orderdto.setCustomerName(order.getUser().getFirstname() + " "+ order.getUser().getLastname());
+      orderdto.setPhoneNo(order.getUser().getPhoneNo());
+      orderdto.setCustomerEmail(order.getUser().getEmail());
+      orderdto.setProductImage(product.getImage());
       return orderdto;
 	  }
 }

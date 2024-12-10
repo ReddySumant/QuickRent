@@ -38,16 +38,16 @@ export function Products({ categoryId }) {
         <Col key={product.productId} xs={12} sm={6} lg={4}>
           <Card className="product-card">
             <div className="card-image-wrapper">
-              <Card.Img variant="top" src={product.image || "/path/to/default-image.jpg"} alt={product.title} />
+              <Card.Img variant="top" src={product.image} alt={product.title} />
             </div>
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
               <div className="product-info">
                 <p>Brand: {product.brandName}</p>
-                <p>Price: ${product.price}</p>
+                <p>Price: ₹{product.price}</p>
               </div>
               <div className="product-actions">
-                <Link to={{ pathname: '/description', state: product.productId }}>
+                <Link to={'/description'} state={product.productId}>
                   <Button variant="primary">View Details</Button>
                 </Link>
                 <Button variant="dark" className="cart-btn">

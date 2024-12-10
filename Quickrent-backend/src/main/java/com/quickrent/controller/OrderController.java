@@ -33,9 +33,9 @@ public class OrderController {
 		System.out.println("Inside Order Controller");
 	}
 	
-	@PostMapping("/getorder")
-	public ResponseEntity<?> getOrderData(@RequestBody RequestOrderDTO reqDTO){
-		return ResponseEntity.ok(orderService.getOrderData(reqDTO.getId()));
+	@GetMapping("/getorder/{orderId}")
+	public ResponseEntity<?> getOrderData(@PathVariable Integer orderId){
+		return ResponseEntity.ok(orderService.getOrderData(orderId));
 	}
 
   // Get orders by user ID

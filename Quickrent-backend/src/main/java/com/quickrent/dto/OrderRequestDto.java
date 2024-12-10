@@ -2,18 +2,22 @@ package com.quickrent.dto;
 
 import java.time.LocalDate;
 
-import com.quickrent.pojo.BillingCycle;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Getter 
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderRequestDto {
 
 	private Double discount;
 	private Double taxes;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private BillingCycle billingCycle;
+	private String billingCycle;
 	private Boolean isCancelled;
 	private String address;
 	private String city;

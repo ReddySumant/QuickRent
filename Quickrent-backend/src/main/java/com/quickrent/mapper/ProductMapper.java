@@ -15,6 +15,9 @@ public class ProductMapper {
         dto.setAdvancePayment(product.getAdvancePayment());
         dto.setCreatedOn(product.getCreatedOn());
         dto.setUpdatedOn(product.getUpdatedOn());
+        dto.setModelName(product.getModelName());
+        dto.setSpecifications(product.getSpecifications());
+        dto.setImage(product.getImage());
 
         // Combine seller's first and last names
         if (product.getUser() != null) {
