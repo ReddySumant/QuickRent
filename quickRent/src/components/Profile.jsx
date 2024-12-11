@@ -103,18 +103,24 @@ function Profile() {
     <div>
       <MainNavbar />
       <div className="main-container">
-        <div className="profile-header mb-4">
+        <div className="profile-header d-flex justify-content-center mt-4 ">
           <h1 className="mb-0">
             <FaUser className="me-2" />
             Customer Personal Information
           </h1>
         </div>
 
-        <Card>
+        <div className="d-flex justify-content-center mt-4">
+        <Card style={{ width: "50%" }}>
           <Card.Body className="card">
             <div className="d-flex justify-content-end mb-4">
               {!isEditing ? (
-                <Button className="personal-edit-btn" variant="primary" onClick={() => setIsEditing(true)}>
+                <Button
+                style={{ width:"30%" }}
+                  className="personal-edit-btn"
+                  variant="primary"
+                  onClick={() => setIsEditing(true)}
+                >
                   <FaEdit className="me-2" />
                   Edit Profile
                 </Button>
@@ -248,6 +254,7 @@ function Profile() {
             </Form>
           </Card.Body>
         </Card>
+        </div>
       </div>
       <Footer />
     </div>

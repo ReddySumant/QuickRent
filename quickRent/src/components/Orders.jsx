@@ -45,47 +45,79 @@ function Orders() {
         </h1>
       </div>
 
-      <input
+      {/* <input
         type="text"
         placeholder="Search orders..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="form-control mb-4"
-      />
+        style={{
+          maxWidth: "400px",
+          margin: "0 auto",
+          padding: "10px",
+          fontSize: "16px",
+        }}
+      /> */}
 
       {loading ? (
         <p>Loading orders...</p> // Show a loading message while data is fetched
       ) : (
-        <Row>
+        <Row style={{ margin: "0", justifyContent: "center" }}>
           {filteredOrders.map((order) => (
-            <Col key={order.id} xs={12} md={3} className="mb-4">
-              <Card className="order-card">
+            <Col
+              key={order.id}
+              xs={12}
+              md={3}
+              className="mb-4"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Card
+                className="order-card"
+                style={{
+                  width: "100%",
+                  borderRadius: "10px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  overflow: "hidden",
+                  transition: "transform 0.3s ease",
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+                onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+              >
                 <Row className="g-0">
                   <Col xs={12} sm={4}>
                     <img
                       src={order.image}
                       className="order-image"
                       alt={order.productName}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
                     />
                   </Col>
                   <Col xs={12} sm={8}>
-                    <Card.Body>
-                      <Card.Title className="h5 mb-3">
+                    <Card.Body style={{ padding: "20px" }}>
+                      <Card.Title className="h5 mb-3" style={{ fontWeight: "bold" }}>
                         {order.productName}
                       </Card.Title>
-                      <Card.Text className="text-muted mb-3">
+                      <Card.Text className="text-muted mb-3" style={{ fontSize: "14px" }}>
                         {order.description}
                       </Card.Text>
                       <div className="mt-auto">
-                        <p className="mb-2">
+                        <p className="mb-2" style={{ fontSize: "14px" }}>
                           <FaCalendarAlt className="me-2 text-primary" />
                           <small>Start: {order.startDate}</small>
                         </p>
-                        <p className="mb-2">
+                        <p className="mb-2" style={{ fontSize: "14px" }}>
                           <FaCalendarAlt className="me-2 text-danger" />
                           <small>Return: {order.endDate}</small>
                         </p>
-                        <p className="mb-0">
+                        <p className="mb-0" style={{ fontSize: "14px" }}>
                           <FaStore className="me-2 text-success" />
                           <small>{order.userName}</small>
                         </p>
@@ -99,7 +131,15 @@ function Orders() {
         </Row>
       )}
 
-      <Footer />
+      <Footer
+        style={{
+          marginTop: "60px",
+          padding: "20px",
+          textAlign: "center",
+          backgroundColor: "#343a40",
+          color: "white",
+        }}
+      />
     </div>
   );
 }

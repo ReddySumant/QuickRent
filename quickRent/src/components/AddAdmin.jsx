@@ -55,7 +55,7 @@ const AddAdmin = () => {
     <DashNav />
     <div className="add-admin-container">
       <h1>Add New Admin</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="input-fields" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="employeeId">Employee ID:</label>
           <input
@@ -100,7 +100,7 @@ const AddAdmin = () => {
             required
           />
         </div>
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn-admin">
           Add Admin
         </button>
       </form>

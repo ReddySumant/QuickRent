@@ -32,8 +32,8 @@ const ProductDescription = () => {
   return (
     <>
     <MainNavbar />
-    <Container fluid className="mt-4 mb-4">
-      <Card className="shadow-lg border-0">
+    <Container fluid className="mt-4 mb-4" >
+      <Card className="shadow-lg border-1">
         <CardBody>
           <Row className="align-items-center p-4">
             {/* Carousel for Images */}
@@ -44,25 +44,10 @@ const ProductDescription = () => {
                     className="d-block w-100 rounded shadow-sm"
                     src={product.image}
                     alt={"product image"}
-                    style={{ height: "300px", objectFit: "cover" }}
+                    style={{ height: "700px", objectFit: "fill" }}
                   />
                 </Carousel.Item>
               </Carousel>
-              <div className="text-center mt-3">
-                <Link to="/checkout" state= {product}>
-                  <Button
-                    color="primary"
-                    className="px-4 py-2"
-                    style={{
-                      backgroundColor: "#007bff",
-                      border: "none",
-                      borderRadius: "20px",
-                    }}
-                  >
-                    Rent Now
-                  </Button>
-                </Link>
-              </div>
             </Col>
 
             {/* Product Information */}
@@ -94,6 +79,26 @@ const ProductDescription = () => {
               <p className="text-dark">
                 <strong>{product.sellerName}</strong>
               </p>
+
+              <div className="text-center mt-3 float-left">
+                <Link to="/checkout" state= {product}>
+                  <Button
+                    color="primary"
+                    className="px-4 py-2"
+                    style={{
+                      backgroundColor: "#007bff",
+                      width:"100%",
+                      border: "none",
+                      borderRadius: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Rent Now
+                  </Button>
+                </Link>
+              </div>
             </Col>
           </Row>
         </CardBody>
