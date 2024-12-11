@@ -100,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
             dto.setPincode(order.getPincode());
             dto.setProductName(order.getProduct().getTitle()); 
             dto.setUserName(order.getUser().getFirstname() + " " + order.getUser().getLastname()); 
+            dto.setImage(order.getProduct().getImage());
             return dto;
         }).collect(Collectors.toList());
     }

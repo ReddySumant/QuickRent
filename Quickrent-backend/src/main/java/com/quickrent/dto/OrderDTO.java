@@ -21,5 +21,6 @@ public class OrderDTO {
     private String pincode;
     private String productName; // To display product details
     private String userName;    // To display user details
+    private String image;
 }
 
